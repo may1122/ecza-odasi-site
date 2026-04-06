@@ -76,6 +76,7 @@ export default function App() {
 
               <div className="media-grid">
                 <img src="/images/logo.png" alt="Logo" className="media-image" />
+                <img src="/images/ekran1.jpg" alt="Ekran görüntüsü" />
 
                 <video controls className="media-video">
                   <source src="/videos/tanitim.mp4" type="video/mp4" />
