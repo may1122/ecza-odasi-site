@@ -1,220 +1,145 @@
-const siteContent = {
-  projectName: "AYCA",
-  projectSubtitle: "Akıllı Nöbet Planlama Sistemi",
-  heroTitle: "Ecza odalarına özel geliştirilen yazılım çözümü",
-  heroText:
-    "Bu site, yazılım projenin ne yaptığını sade biçimde anlatmak ve teklif talebi toplamak için hazırlanmıştır. Kodlar GitHub'da tutulabilir ve Vercel benzeri bir platformda online yayınlanabilir.",
-  aboutTitle: "Yazılım ne yapıyor?",
-  aboutText:
-    "Bu bölümde sistemin sağladığı temel faydalar anlatılır. Metinler daha sonra tek yerden kolayca değiştirilebilir.",
-  features: [
-    "Başvuru ve kayıt süreçlerini takip eder",
-    "Kurumsal iş akışlarını daha düzenli hale getirir",
-    "Yönetim için temel görünürlük ve takip sağlar",
-    "Sade arayüz ile hızlı kullanım sunar",
-  ],
-  offerTitle: "Teklif Al",
-  offerText:
-    "Kurumlar bu bölümden iletişim bilgilerini bırakabilir. İstersen daha sonra bu formu e-posta veya WhatsApp bağlantısına çevirebiliriz.",
-  contactNote:
-    "Bu sürüm basit, tek kullanıcılık ve GitHub'dan yönetilebilir yapı hedefiyle hazırlanmıştır.",
-};
+import { siteContent } from "./data/siteContent";
 
-export default function EczaOdasiLandingPage() {
+export default function App() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-slate-950/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3">
-            <img
-              src="/images/logo.png"
-              alt="AYCA Logo"
-              className="h-12 w-12 rounded-xl object-contain"
-            />
-
-            <div>
-              <div className="text-lg font-semibold tracking-tight">
-                {siteContent.projectName}
-              </div>
-              <div className="text-xs text-slate-400">
-                {siteContent.projectSubtitle}
-              </div>
-            </div>
+    <div className="page">
+      <header className="header">
+        <div className="container nav">
+          <div>
+            <div className="brand">{siteContent.projectName}</div>
+            <div className="subtitle">{siteContent.projectSubtitle}</div>
           </div>
 
-          <nav className="hidden gap-6 text-sm text-slate-300 md:flex">
-            <a href="#anasayfa" className="transition hover:text-white">
-              Ana Sayfa
-            </a>
-            <a href="#hakkinda" className="transition hover:text-white">
-              Bilgilendirme
-            </a>
-            <a href="#teklif" className="transition hover:text-white">
-              Teklif Al
-            </a>
+          <nav className="menu">
+            <a href="#anasayfa">Ana Sayfa</a>
+            <a href="#bilgilendirme">Bilgilendirme</a>
+            <a href="#teklif">Teklif Al</a>
           </nav>
         </div>
       </header>
 
-      <section id="anasayfa" className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.18),transparent_30%),radial-gradient(circle_at_top_left,rgba(34,197,94,0.14),transparent_30%)]" />
-        <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-2 md:py-28">
-          <div className="flex flex-col justify-center">
-            <div className="mb-4 inline-flex w-fit rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs text-cyan-300">
-              Basit ve online yayınlanabilir yapı
-            </div>
+      <main>
+        <section id="anasayfa" className="hero">
+          <div className="container hero-grid">
+            <div>
+              <div className="badge">{siteContent.heroBadge}</div>
+              <h1>{siteContent.heroTitle}</h1>
+              <p>{siteContent.heroText}</p>
 
-            <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
-              {siteContent.heroTitle}
-            </h1>
-
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-300 md:text-lg">
-              {siteContent.heroText}
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#hakkinda"
-                className="rounded-2xl bg-cyan-400 px-5 py-3 text-center text-sm font-semibold text-slate-950 shadow-xl transition hover:scale-[1.02]"
-              >
-                Yazılımı İncele
-              </a>
-
-              <a
-                href="#teklif"
-                className="rounded-2xl border border-white/15 px-5 py-3 text-center text-sm font-medium text-white transition hover:bg-white/5"
-              >
-                Teklif Talep Et
-              </a>
-            </div>
-          </div>
-
-          <div className="rounded-[32px] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur">
-            <div className="rounded-[24px] border border-white/10 bg-slate-900/70 p-6">
-              <div className="text-sm font-medium text-slate-300">
-                Yayın mantığı
+              <div className="buttons">
+                <a className="button primary" href="#bilgilendirme">
+                  Yazılımı İncele
+                </a>
+                <a className="button secondary" href="#teklif">
+                  Teklif Talep Et
+                </a>
               </div>
+            </div>
 
-              <div className="mt-4 space-y-3 text-sm text-slate-300">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  1. Kodu GitHub'a yüklersin
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  2. Vercel / Netlify projeyi okur
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  3. Site online yayınlanır
-                </div>
-                <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-4 text-cyan-100">
-                  4. Değişiklik yaptıkça yeniden güncellenir
-                </div>
+            <div className="card">
+              <h3>Yayın mantığı</h3>
+              <div className="steps">
+                <div className="step">1. Kodu GitHub'a yüklersin</div>
+                <div className="step">2. Vercel projeyi bağlar</div>
+                <div className="step">3. Site online yayınlanır</div>
+                <div className="step active">4. Güncelledikçe otomatik yenilenir</div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="hakkinda" className="border-y border-white/10 bg-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <div className="max-w-3xl">
-            <div className="text-sm font-medium text-cyan-300">
-              Bilgilendirme
+        <section id="bilgilendirme" className="section alt">
+          <div className="container">
+            <div className="section-head">
+              <span className="section-label">Bilgilendirme</span>
+              <h2>{siteContent.infoTitle}</h2>
+              <p>{siteContent.infoText}</p>
             </div>
 
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-              {siteContent.aboutTitle}
-            </h2>
+            <div className="feature-grid">
+              {siteContent.features.map((item) => (
+                <div key={item} className="feature-card">
+                  <h3>{item}</h3>
+                  <p>
+                    Bu alanı daha sonra kendi projenin gerçek detaylarıyla
+                    değiştirebilirsin.
+                  </p>
+                </div>
+              ))}
+            </div>
 
-            <p className="mt-5 text-base leading-8 text-slate-300">
-              {siteContent.aboutText}
-            </p>
+            <div className="media-box">
+              <h3>Görsel / video alanı</h3>
+              <p>
+                İstersen aşağıya ekran görüntüsü, logo veya video ekleyebilirsin.
+              </p>
+
+              <div className="media-grid">
+                <img src="/images/logo.png" alt="Logo" className="media-image" />
+
+                <video controls className="media-video">
+                  <source src="/videos/tanitim.mp4" type="video/mp4" />
+                  Tarayıcın video etiketini desteklemiyor.
+                </video>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {siteContent.features.map((item) => (
-              <div
-                key={item}
-                className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-lg"
-              >
-                <div className="text-lg font-semibold">{item}</div>
-                <p className="mt-3 text-sm leading-7 text-slate-300">
-                  Bu alanı daha sonra kendi projenin gerçek detayları ile
-                  değiştirebilirsin.
+        <section id="teklif" className="section">
+          <div className="container offer-grid">
+            <div>
+              <span className="section-label">Teklif Al</span>
+              <h2>{siteContent.offerTitle}</h2>
+              <p>{siteContent.offerText}</p>
+
+              <div className="contact-box">
+                <p>
+                  <strong>E-posta:</strong>{" "}
+                  <a href={`mailto:${siteContent.email}`}>{siteContent.email}</a>
+                </p>
+                <p>
+                  <strong>WhatsApp:</strong>{" "}
+                  <a
+                    href={siteContent.whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Mesaj gönder
+                  </a>
                 </p>
               </div>
-            ))}
-          </div>
-
-          <div className="mt-12 rounded-[28px] border border-white/10 bg-slate-900/70 p-8">
-            <div className="text-xl font-semibold">Görsel ve video ekleme</div>
-            <p className="mt-4 text-sm leading-7 text-slate-300">
-              Panel olmadan da proje klasörüne görsel veya video koyup sayfada
-              gösterebilirsin. Bu yapı o mantığa uygun olacak şekilde sade
-              tutulmuştur.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="teklif" className="mx-auto max-w-6xl px-6 py-20">
-        <div className="grid gap-10 md:grid-cols-2">
-          <div>
-            <div className="text-sm font-medium text-cyan-300">Teklif Al</div>
-
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-              {siteContent.offerTitle}
-            </h2>
-
-            <p className="mt-5 max-w-xl text-base leading-8 text-slate-300">
-              {siteContent.offerText}
-            </p>
-
-            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-slate-300">
-              İstersen bu bölümü daha sonra sadece mailto bağlantısı, WhatsApp
-              butonu veya çalışan form olarak düzenleyebiliriz.
             </div>
-          </div>
 
-          <div className="rounded-[32px] border border-white/10 bg-white/5 p-6 shadow-xl">
-            <div className="grid gap-4">
-              <input
-                className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm outline-none placeholder:text-slate-500"
-                placeholder="Kurum Adı"
-              />
-              <input
-                className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm outline-none placeholder:text-slate-500"
-                placeholder="Yetkili Kişi"
-              />
-              <input
-                className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm outline-none placeholder:text-slate-500"
-                placeholder="Telefon veya E-posta"
-              />
-              <textarea
-                rows={5}
-                className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm outline-none placeholder:text-slate-500"
-                placeholder="Talep veya kısa açıklama"
-              />
-              <button className="rounded-2xl bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:scale-[1.01]">
-                Teklif Gönder
-              </button>
-              <p className="text-xs leading-6 text-slate-500">
-                Bu form şu an tasarım amaçlıdır. İstersen sonradan çalışan hale
-                getiririz.
+            <div className="card">
+              <h3>Örnek teklif formu</h3>
+
+              <form className="form" onSubmit={(e) => e.preventDefault()}>
+                <input type="text" placeholder="Kurum Adı" />
+                <input type="text" placeholder="Yetkili Kişi" />
+                <input type="text" placeholder="Telefon veya E-posta" />
+                <textarea rows="5" placeholder="Talep veya kısa açıklama" />
+                <button type="submit" className="button primary full">
+                  Teklif Gönder
+                </button>
+              </form>
+
+              <p className="form-note">
+                Bu form şu an tasarım amaçlıdır. Sonradan çalışan hale
+                getirilebilir.
               </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      <footer className="border-t border-white/10 bg-slate-950">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+      <footer className="footer">
+        <div className="container footer-wrap">
           <div>
-            <span className="font-medium text-white">
-              {siteContent.projectName}
-            </span>{" "}
-            · Tanıtım ve teklif toplama sitesi
+            <strong>{siteContent.projectName}</strong> · Tanıtım ve teklif toplama
+            sitesi
           </div>
-          <div>{siteContent.contactNote}</div>
+          <div>{siteContent.footerNote}</div>
         </div>
       </footer>
     </div>
