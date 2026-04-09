@@ -1,28 +1,34 @@
 export const siteContent = {
-  projectName: "Proje Adı",
-  projectSubtitle: "Ecza odaları için yazılım çözümü",
+  brand: "AYÇA",
+  subtitle: "Akıllı Nöbet Planlama Sistemi",
+  slogan: "Nöbet planlamasında hız, denge ve güven tek ekranda.",
+  heroDescription:
+    "Eczacı odaları ve nöbet planlama süreçleri için geliştirilen modern yazılım altyapısı.",
+  primaryButton: "Demo Talep Et",
+  secondaryButton: "Özellikleri İncele",
 
-  heroBadge: "Basit, online ve kolay yönetilebilir yapı",
-  heroTitle: "Ecza odalarına özel geliştirilen yazılım çözümü",
-  heroText:
-    "Bu web sitesi, yazılım projenin ne yaptığını sade biçimde anlatmak ve teklif talebi toplamak için hazırlanmıştır.",
-
-  infoTitle: "Yazılım ne yapıyor?",
-  infoText:
-    "Bu bölümde yazılımın temel faydaları ve sağladığı kolaylıklar anlatılır.",
-
-  features: [
-    "Başvuru ve kayıt süreçlerini takip eder",
-    "Kurumsal iş akışlarını daha düzenli hale getirir",
-    "Yönetim için temel görünürlük sağlar",
-    "Sade arayüz ile hızlı kullanım sunar"
+  stats: [
+    { label: "Kontrol", value: "7/24" },
+    { label: "Analiz", value: "Akıllı" },
+    { label: "Raporlama", value: "Hızlı" },
   ],
 
-  offerTitle: "Teklif Al",
-  offerText:
-    "Kurumlar bu bölümden iletişim bilgilerini bırakabilir veya doğrudan sana ulaşabilir.",
+  problems: [
+    "Nöbet planlarında manuel kontrol çok zaman alır.",
+    "Min gap, max gap ve aylık denge takibi zorlaşır.",
+    "Aynı gün çakışmaları ve grup bazlı dengesizlikler geç fark edilir.",
+  ],
 
-  email: "ornek@firma.com",
-  whatsappUrl: "https://wa.me/905555555555",
-  footerNote: "Bu yapı GitHub üzerinden güncellenip online yayınlanabilir."
+  contactTitle: "İletişime geçin, size özel yapıyı birlikte kuralım",
+  contactText:
+    "AYÇA ile nöbet planlama süreçlerinizi daha hızlı, daha şeffaf ve daha profesyonel hale getirin.",
+
+  contactCards: [
+    {
+      title: "E-posta",
+      value: "info@ayca.com",
+      action: "Mail Gönder",
+      href: "mailto:info@ayca.com",
+    },
+  ],
 };
