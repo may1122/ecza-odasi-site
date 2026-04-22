@@ -64,7 +64,7 @@ header[data-testid="stHeader"] {
 }
 
 .block-container {
-  padding-top: 2rem;
+  padding-top: 1.8rem;
   padding-bottom: 2rem;
   max-width: 1180px;
 }
@@ -88,13 +88,6 @@ section[data-testid="stSidebar"] > div {
   margin-right: auto;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-.brand-row{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:18px;
 }
 
 .brand-text{
@@ -196,6 +189,7 @@ section[data-testid="stSidebar"] > div {
   border-radius:18px;
   padding:18px;
   box-shadow:var(--shadow);
+  height:100%;
 }
 
 .metric-value{
@@ -254,6 +248,7 @@ section[data-testid="stSidebar"] > div {
   border-radius:18px;
   padding:14px 16px;
   box-shadow:var(--shadow);
+  height:100%;
 }
 
 .metric-mini .label{
@@ -296,21 +291,8 @@ div[data-testid="metric-container"] {
 .stDateInput > div > div input {
   border-radius: 12px !important;
 }
-
 </style>
 """, unsafe_allow_html=True)
-
-# =========================================================
-# STATE
-# =========================================================
-if "page" not in st.session_state:
-    st.session_state.page = "landing"
-
-def go_dashboard():
-    st.session_state.page = "dashboard"
-
-def go_landing():
-    st.session_state.page = "landing"
 
 # =========================================================
 # DATA
@@ -471,13 +453,6 @@ def show_landing():
         </div>
         """, unsafe_allow_html=True)
 
-        b1, b2 = st.columns(2)
-        with b1:
-            if st.button("Demo Paneline Geç", use_container_width=True):
-                go_dashboard()
-        with b2:
-            st.button("Teklif Al", use_container_width=True)
-
         st.write("")
         m1, m2, m3 = st.columns(3)
         with m1:
@@ -535,34 +510,22 @@ def show_landing():
     <div class="cta-box">
         <div class="section-title" style="margin-top:0;">Kurumsal demo ile başlayalım.</div>
         <div class="section-sub" style="margin-bottom:14px;">
-            Tanıtım ekranından doğrudan dashboard paneline geçebilir ve canlı kullanım mantığını inceleyebilirsiniz.
+            Üstteki Panel sekmesinden doğrudan dashboard ekranına geçebilir ve canlı kullanım mantığını inceleyebilirsiniz.
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    cta1, cta2, cta3 = st.columns([1, 1, 2])
-    with cta1:
-        if st.button("Panele Geç", key="cta_dashboard", use_container_width=True):
-            go_dashboard()
-    with cta2:
-        st.button("İletişim", key="cta_contact", use_container_width=True)
-    with cta3:
-        st.caption("Mail: info@ayca.com.tr  |  Web: ayca.com.tr")
+    st.caption("Mail: info@ayca.com.tr  |  Web: ayca.com.tr")
 
 # =========================================================
 # DASHBOARD
 # =========================================================
 def show_dashboard():
-    top1, top2 = st.columns([5, 1])
-    with top1:
-        st.markdown('<div class="main-title">AYÇA | Eczane Nöbet Takip Sistemi</div>', unsafe_allow_html=True)
-        st.markdown(
-            '<div class="main-subtitle">Nöbet planını yalnızca görüntülemek değil, daha şeffaf ve daha yönetilebilir hale getirmek için tasarlandı.</div>',
-            unsafe_allow_html=True
-        )
-    with top2:
-        if st.button("Ana Sayfa", use_container_width=True):
-            go_landing()
+    st.markdown('<div class="main-title">AYÇA | Eczane Nöbet Takip Sistemi</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="main-subtitle">Nöbet planını yalnızca görüntülemek değil, daha şeffaf ve daha yönetilebilir hale getirmek için tasarlandı.</div>',
+        unsafe_allow_html=True
+    )
 
     st.markdown("""
     <div class="hero-box">
@@ -589,7 +552,7 @@ def show_dashboard():
         return
 
     menu = st.sidebar.radio(
-        "Menü",
+        "Panel Menü",
         [
             "Genel Özet",
             "Tarih Seç",
@@ -792,14 +755,13 @@ def show_dashboard():
 # =========================================================
 render_sidebar_logo()
 
-if st.session_state.page == "landing":
-    st.sidebar.markdown("### Sayfa")
-    st.sidebar.info("Şu an tanıtım ekranındasınız.")
-    if st.sidebar.button("Dashboard’a Geç", use_container_width=True):
-        go_dashboard()
+st.sidebar.markdown("---")
+st.sidebar.caption("Akıllı Yazılım Çözüm Asistanı")
+
+tab1, tab2 = st.tabs(["Tanıtım", "Panel"])
+
+with tab1:
     show_landing()
-else:
-    st.sidebar.markdown("### Sayfa")
-    if st.sidebar.button("Tanıtım Sayfası", use_container_width=True):
-        go_landing()
+
+with tab2:
     show_dashboard()
