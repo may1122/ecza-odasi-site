@@ -269,6 +269,22 @@ section[data-testid="stSidebar"] > div {
   font-size: 0.9rem;
 }
 
+.video-points {
+  margin-top: 14px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+
+.video-points ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
 div[data-testid="metric-container"] {
   background: #ffffff;
   border: 1px solid var(--line);
@@ -437,7 +453,7 @@ def show_landing():
 
     st.markdown('<div class="top-divider"></div>', unsafe_allow_html=True)
 
-    col_left, col_right = st.columns([1.2, 0.9], gap="large")
+    col_left, col_right = st.columns([1.05, 1.15], gap="large")
 
     with col_left:
         st.markdown("""
@@ -463,11 +479,35 @@ def show_landing():
             metric_card("Kurumsal sunum", "Karar vericilere güçlü ve anlaşılır çıktı üretir.")
 
     with col_right:
-        info_card(
-            "Canlı Kontrol Paneli",
-            "Dashboard tarafında tarih, grup, eczane ve aylık takvim ekranlarını tek panelde kullanabilirsiniz."
+        st.markdown(
+            """
+            <div class="card" style="margin-bottom:14px;">
+                <h3>Canlı Kullanım Önizlemesi</h3>
+                <p>AYÇA’nın panel yapısını ve kullanım akışını bu alanda kısa video ile gösterebilirsiniz.</p>
+            </div>
+            """,
+            unsafe_allow_html=True
         )
-        st.info("Bu alana ekran görüntüsü veya mockup görseli ekleyebiliriz.")
+
+        video_path = "tanitim.mp4"
+
+        if os.path.exists(video_path):
+            st.video(video_path)
+        else:
+            st.warning("Video bulunamadı. Lütfen proje klasörüne 'tanitim.mp4' dosyasını ekleyin.")
+
+        st.markdown(
+            """
+            <div class="video-points">
+                <ul>
+                    <li>Excel ile hızlı veri alımı</li>
+                    <li>Tarih, grup ve eczane bazlı analiz</li>
+                    <li>Kurumsal raporlama görünümü</li>
+                </ul>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
     st.write("")
     st.markdown('<div class="section-title">Kuruma değer üreten ana modüller</div>', unsafe_allow_html=True)
