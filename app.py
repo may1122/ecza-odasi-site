@@ -54,7 +54,6 @@ st.markdown("""
   --soft-blue:#eef4ff;
   --soft-purple:#f4efff;
   --shadow:0 16px 40px rgba(22,34,51,.08);
-  --radius:22px;
 }
 
 html, body, [class*="css"] {
@@ -117,7 +116,6 @@ section[data-testid="stSidebar"] > div {
 .hero-box{
   background: transparent;
   border: none;
-  border-radius: 0;
   padding: 0 8px 0 0;
   box-shadow: none;
   margin-bottom: 18px;
@@ -188,28 +186,6 @@ section[data-testid="stSidebar"] > div {
   margin:0;
   color:var(--muted);
   line-height:1.7;
-}
-
-.metric-card{
-  background:rgba(255,255,255,.96);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:18px 18px;
-  box-shadow:var(--shadow);
-  height:100%;
-}
-
-.metric-value{
-  font-size:28px;
-  font-weight:800;
-  color:var(--text);
-  margin-bottom:8px;
-}
-
-.metric-label{
-  font-size:15px;
-  color:var(--muted);
-  line-height:1.6;
 }
 
 .step-card{
@@ -307,7 +283,7 @@ section[data-testid="stSidebar"] > div {
   border-radius: 26px;
   padding: 10px;
   box-shadow: var(--shadow);
-  margin-top: 10px;
+  margin-top: 6px;
   overflow: hidden;
 }
 
@@ -341,7 +317,6 @@ section[data-testid="stSidebar"] > div {
 .info-icon.red{ background:var(--soft-red); }
 .info-icon.green{ background:var(--soft-green); }
 .info-icon.blue{ background:var(--soft-blue); }
-.info-icon.purple{ background:var(--soft-purple); }
 
 .info-title{
   font-size:22px;
@@ -353,7 +328,6 @@ section[data-testid="stSidebar"] > div {
 .info-title.red{ color:var(--red); }
 .info-title.green{ color:var(--green); }
 .info-title.blue{ color:var(--primary2); }
-.info-title.purple{ color:var(--purple); }
 
 .info-list{
   margin:0;
@@ -373,6 +347,7 @@ section[data-testid="stSidebar"] > div {
   border-radius:24px;
   box-shadow:var(--shadow);
   padding:18px 10px;
+  margin-top:16px;
 }
 
 .metric-feature{
@@ -513,34 +488,12 @@ def render_sidebar_logo():
         st.sidebar.markdown("## AYÇA")
         st.sidebar.caption("Akıllı Yazılım Çözüm Asistanı")
 
-def metric_card(value, label):
-    st.markdown(
-        f"""
-        <div class="metric-card">
-            <div class="metric-value">{value}</div>
-            <div class="metric-label">{label}</div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
 def show_metric_mini(label, value):
     st.markdown(
         f"""
         <div class="metric-mini">
             <div class="label">{label}</div>
             <div class="value">{value}</div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-def info_card(title, text):
-    st.markdown(
-        f"""
-        <div class="card">
-            <h3>{title}</h3>
-            <p>{text}</p>
         </div>
         """,
         unsafe_allow_html=True
@@ -617,6 +570,40 @@ def show_landing():
         else:
             st.warning("Video bulunamadı. Lütfen proje klasörüne 'tanitim.mp4' dosyasını ekleyin.")
 
+        st.markdown('<div class="metric-strip">', unsafe_allow_html=True)
+        m1, m2, m3 = st.columns(3)
+        with m1:
+            st.markdown("""
+            <div class="metric-feature">
+                <div class="metric-feature-icon">🎯</div>
+                <div>
+                    <div class="metric-feature-title">Tek merkez</div>
+                    <div class="metric-feature-text">Planlama, kontrol ve raporlama tek akışta yönetilir.</div>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        with m2:
+            st.markdown("""
+            <div class="metric-feature">
+                <div class="metric-feature-icon" style="background:#eefbf4;">🛡️</div>
+                <div>
+                    <div class="metric-feature-title">Daha az hata</div>
+                    <div class="metric-feature-text">Çakışma, dengesizlik ve kritik ihlaller görünür hale gelir.</div>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        with m3:
+            st.markdown("""
+            <div class="metric-feature">
+                <div class="metric-feature-icon" style="background:#f4efff;">📊</div>
+                <div>
+                    <div class="metric-feature-title">Kurumsal sunum</div>
+                    <div class="metric-feature-text">Karar vericilere güçlü ve anlaşılır çıktı üretir.</div>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+
     with col_right:
         st.markdown("""
         <div class="info-list-card">
@@ -625,9 +612,9 @@ def show_landing():
                 <div style="width:100%;">
                     <div class="info-title red">Sorunlar</div>
                     <ul class="info-list">
-                        <li>Excel tabanlı planlamalarda hata ve tutarsızlık riski yüksektir.</li>
+                        <li>Manuel müdahale gerektiren planlamalarda hata riski yüksektir.</li>
                         <li>Denge kontrolü ve kısıt ihlalleri çoğu zaman geç fark edilir.</li>
-                        <li>Raporlama süreci dağınık ilerler ve zaman kaybettirir.</li>
+                        <li>Raporlama süreçleri zaman alır ve dağınıktır.</li>
                     </ul>
                 </div>
             </div>
@@ -641,8 +628,8 @@ def show_landing():
                 <div style="width:100%;">
                     <div class="info-title green">AYÇA’nın Çözümü</div>
                     <ul class="info-list">
-                        <li>Verileri hızlıca alır, kurallara göre kontrol eder.</li>
-                        <li>Denge, çakışma ve kritik ihlalleri görünür hale getirir.</li>
+                        <li>Verilerinizi hızlıca alır, kurallara göre kontrol eder.</li>
+                        <li>Denge, çakışma ve kritik ihlalleri otomatik analiz eder.</li>
                         <li>Anlaşılır raporlar ve güçlü özet tablolar üretir.</li>
                         <li>Tüm süreci tek bir panelde sadeleştirir.</li>
                     </ul>
@@ -672,7 +659,7 @@ def show_landing():
         <div class="cta-box">
             <div class="cta-inline">
                 <div>
-                    <div class="info-title purple" style="margin-bottom:6px;">Hemen deneyin</div>
+                    <div style="font-size:22px; font-weight:800; color:var(--text); margin-bottom:6px;">Hemen deneyin</div>
                     <div style="color:var(--muted); line-height:1.7; font-size:16px;">
                         Panel sekmesine geçerek AYÇA’nın canlı kullanımını inceleyebilir, tüm modülleri keşfedebilirsiniz.
                     </div>
@@ -683,41 +670,6 @@ def show_landing():
             </div>
         </div>
         """, unsafe_allow_html=True)
-
-    st.write("")
-    st.markdown('<div class="metric-strip">', unsafe_allow_html=True)
-    m1, m2, m3 = st.columns(3)
-    with m1:
-        st.markdown("""
-        <div class="metric-feature">
-            <div class="metric-feature-icon">🎯</div>
-            <div>
-                <div class="metric-feature-title">Tek merkez</div>
-                <div class="metric-feature-text">Planlama, kontrol ve raporlama tek akışta yönetilir.</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-    with m2:
-        st.markdown("""
-        <div class="metric-feature">
-            <div class="metric-feature-icon" style="background:#eefbf4;">🛡️</div>
-            <div>
-                <div class="metric-feature-title">Daha az hata</div>
-                <div class="metric-feature-text">Çakışma, dengesizlik ve kritik ihlaller görünür hale gelir.</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-    with m3:
-        st.markdown("""
-        <div class="metric-feature">
-            <div class="metric-feature-icon" style="background:#f4efff;">📊</div>
-            <div>
-                <div class="metric-feature-title">Kurumsal sunum</div>
-                <div class="metric-feature-text">Karar vericilere güçlü ve anlaşılır çıktı üretir.</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
 
     st.write("")
     st.markdown('<div class="section-title" style="text-align:center;">Çalışma süreci</div>', unsafe_allow_html=True)
