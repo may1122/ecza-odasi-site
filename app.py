@@ -285,6 +285,21 @@ section[data-testid="stSidebar"] > div {
   line-height: 1.8;
 }
 
+.video-wrap {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 14px;
+  box-shadow: var(--shadow);
+  margin-top: 16px;
+}
+
+.right-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 div[data-testid="metric-container"] {
   background: #ffffff;
   border: 1px solid var(--line);
@@ -453,7 +468,7 @@ def show_landing():
 
     st.markdown('<div class="top-divider"></div>', unsafe_allow_html=True)
 
-    col_left, col_right = st.columns([1.05, 1.15], gap="large")
+    col_left, col_right = st.columns([1.15, 0.95], gap="large")
 
     with col_left:
         st.markdown("""
@@ -469,19 +484,9 @@ def show_landing():
         </div>
         """, unsafe_allow_html=True)
 
-        st.write("")
-        m1, m2, m3 = st.columns(3)
-        with m1:
-            metric_card("Tek merkez", "Planlama, kontrol ve raporlama tek akışta yönetilir.")
-        with m2:
-            metric_card("Daha az hata", "Çakışma, dengesizlik ve kritik ihlaller görünür olur.")
-        with m3:
-            metric_card("Kurumsal sunum", "Karar vericilere güçlü ve anlaşılır çıktı üretir.")
-
-    with col_right:
         st.markdown(
             """
-            <div class="card" style="margin-bottom:14px;">
+            <div class="card" style="margin-bottom:12px;">
                 <h3>Canlı Kullanım Önizlemesi</h3>
                 <p>AYÇA’nın panel yapısını ve kullanım akışını bu alanda kısa video ile gösterebilirsiniz.</p>
             </div>
@@ -489,12 +494,24 @@ def show_landing():
             unsafe_allow_html=True
         )
 
+        st.markdown('<div class="video-wrap">', unsafe_allow_html=True)
         video_path = "tanitim.mp4"
-
         if os.path.exists(video_path):
             st.video(video_path)
         else:
             st.warning("Video bulunamadı. Lütfen proje klasörüne 'tanitim.mp4' dosyasını ekleyin.")
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    with col_right:
+        st.markdown(
+            """
+            <div class="card" style="margin-bottom:14px;">
+                <h3>Öne Çıkan Kabiliyetler</h3>
+                <p>AYÇA; yalnızca nöbet listesini göstermekle kalmaz, süreci yönetilebilir hale getirir.</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
         st.markdown(
             """
@@ -503,11 +520,33 @@ def show_landing():
                     <li>Excel ile hızlı veri alımı</li>
                     <li>Tarih, grup ve eczane bazlı analiz</li>
                     <li>Kurumsal raporlama görünümü</li>
+                    <li>Aylık takvim ve özet tablo ekranları</li>
+                    <li>Şeffaf ve anlaşılır panel deneyimi</li>
                 </ul>
             </div>
             """,
             unsafe_allow_html=True
         )
+
+        st.write("")
+        info_card(
+            "Kurumsal Sunum",
+            "Elde edilen çıktılar, oda yönetimi ve ilgili paydaşlara daha net aktarılabilecek profesyonel bir yapıda sunulur."
+        )
+        st.write("")
+        info_card(
+            "Operasyonel Kolaylık",
+            "Aynı akış içinde veri yükleme, kontrol, tarih seçimi, grup analizi ve eczane bazlı inceleme yapılabilir."
+        )
+
+    st.write("")
+    m1, m2, m3 = st.columns(3)
+    with m1:
+        metric_card("Tek merkez", "Planlama, kontrol ve raporlama tek akışta yönetilir.")
+    with m2:
+        metric_card("Daha az hata", "Çakışma, dengesizlik ve kritik ihlaller görünür olur.")
+    with m3:
+        metric_card("Kurumsal sunum", "Karar vericilere güçlü ve anlaşılır çıktı üretir.")
 
     st.write("")
     st.markdown('<div class="section-title">Kuruma değer üreten ana modüller</div>', unsafe_allow_html=True)
