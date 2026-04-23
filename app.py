@@ -47,6 +47,12 @@ st.markdown("""
   --line:#dbe3ee;
   --accent:#e9f1ff;
   --green:#22a06b;
+  --red:#d92d20;
+  --purple:#8754d9;
+  --soft-red:#fff1f0;
+  --soft-green:#eefbf4;
+  --soft-blue:#eef4ff;
+  --soft-purple:#f4efff;
   --shadow:0 16px 40px rgba(22,34,51,.08);
   --radius:22px;
 }
@@ -66,7 +72,7 @@ header[data-testid="stHeader"] {
 .block-container {
   padding-top: 1.8rem;
   padding-bottom: 2rem;
-  max-width: 1180px;
+  max-width: 1280px;
 }
 
 section[data-testid="stSidebar"] {
@@ -109,12 +115,12 @@ section[data-testid="stSidebar"] > div {
 }
 
 .hero-box{
-  background: linear-gradient(135deg, rgba(31,75,153,.06), rgba(46,107,219,.05));
-  border:1px solid var(--line);
-  border-radius:28px;
-  padding:34px;
-  box-shadow:var(--shadow);
-  margin-bottom:22px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0 8px 0 0;
+  box-shadow: none;
+  margin-bottom: 18px;
 }
 
 .eyebrow{
@@ -126,16 +132,16 @@ section[data-testid="stSidebar"] > div {
   padding:10px 14px;
   font-size:14px;
   font-weight:700;
-  margin-bottom:16px;
+  margin-bottom:18px;
 }
 
 .hero-title{
-  font-size:48px;
-  line-height:1.05;
-  letter-spacing:-0.03em;
+  font-size:62px;
+  line-height:1.06;
+  letter-spacing:-0.04em;
   font-weight:800;
   color:var(--text);
-  margin-bottom:14px;
+  margin-bottom:18px;
 }
 
 .hero-title .blue { color: var(--primary2); }
@@ -143,7 +149,7 @@ section[data-testid="stSidebar"] > div {
 
 .hero-sub{
   color:var(--muted);
-  font-size:18px;
+  font-size:19px;
   line-height:1.7;
   max-width:760px;
 }
@@ -153,7 +159,7 @@ section[data-testid="stSidebar"] > div {
   font-weight:800;
   color:var(--text);
   letter-spacing:-0.02em;
-  margin: 18px 0 8px 0;
+  margin: 22px 0 8px 0;
 }
 
 .section-sub{
@@ -165,7 +171,7 @@ section[data-testid="stSidebar"] > div {
 .card{
   background:var(--surface);
   border:1px solid var(--line);
-  border-radius:22px;
+  border-radius:24px;
   padding:22px;
   box-shadow:var(--shadow);
   height:100%;
@@ -174,7 +180,8 @@ section[data-testid="stSidebar"] > div {
 .card h3{
   margin:0 0 10px 0;
   color:var(--text);
-  font-size:20px;
+  font-size:22px;
+  font-weight:800;
 }
 
 .card p{
@@ -184,37 +191,62 @@ section[data-testid="stSidebar"] > div {
 }
 
 .metric-card{
-  background:rgba(255,255,255,.9);
+  background:rgba(255,255,255,.96);
   border:1px solid var(--line);
-  border-radius:18px;
-  padding:18px;
+  border-radius:22px;
+  padding:18px 18px;
   box-shadow:var(--shadow);
   height:100%;
 }
 
 .metric-value{
-  font-size:26px;
+  font-size:28px;
   font-weight:800;
   color:var(--text);
+  margin-bottom:8px;
 }
 
 .metric-label{
-  font-size:14px;
+  font-size:15px;
   color:var(--muted);
-  margin-top:6px;
+  line-height:1.6;
+}
+
+.step-card{
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  padding:28px 24px;
 }
 
 .step-num{
-  width:40px;
-  height:40px;
-  border-radius:12px;
-  background:var(--primary);
-  color:#fff;
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  background:#eef4ff;
+  color:var(--primary2);
   display:flex;
   align-items:center;
   justify-content:center;
   font-weight:800;
-  margin-bottom:12px;
+  font-size:28px;
+  margin:0 auto 14px auto;
+}
+
+.step-title{
+  text-align:center;
+  font-size:18px;
+  font-weight:800;
+  color:var(--text);
+  margin-bottom:6px;
+}
+
+.step-text{
+  text-align:center;
+  color:var(--muted);
+  line-height:1.7;
+  font-size:15px;
 }
 
 .cta-box{
@@ -222,8 +254,8 @@ section[data-testid="stSidebar"] > div {
   border:1px solid #d6e4ff;
   border-radius:28px;
   box-shadow:var(--shadow);
-  padding:30px;
-  margin-top:20px;
+  padding:24px 26px;
+  margin-top:14px;
 }
 
 .main-title {
@@ -269,35 +301,128 @@ section[data-testid="stSidebar"] > div {
   font-size: 0.9rem;
 }
 
-.video-points {
-  margin-top: 14px;
-  background: #ffffff;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 16px 18px;
-  box-shadow: var(--shadow);
-}
-
-.video-points ul {
-  margin: 0;
-  padding-left: 18px;
-  color: var(--muted);
-  line-height: 1.8;
-}
-
 .video-wrap {
   background: #ffffff;
   border: 1px solid var(--line);
-  border-radius: 22px;
-  padding: 14px;
+  border-radius: 26px;
+  padding: 10px;
   box-shadow: var(--shadow);
-  margin-top: 16px;
+  margin-top: 10px;
+  overflow: hidden;
 }
 
-.right-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+.info-list-card{
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:20px 22px;
+  margin-bottom:16px;
+}
+
+.info-list-head{
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+}
+
+.info-icon{
+  width:64px;
+  height:64px;
+  min-width:64px;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:700;
+}
+
+.info-icon.red{ background:var(--soft-red); }
+.info-icon.green{ background:var(--soft-green); }
+.info-icon.blue{ background:var(--soft-blue); }
+.info-icon.purple{ background:var(--soft-purple); }
+
+.info-title{
+  font-size:22px;
+  font-weight:800;
+  margin-bottom:8px;
+  color:var(--text);
+}
+
+.info-title.red{ color:var(--red); }
+.info-title.green{ color:var(--green); }
+.info-title.blue{ color:var(--primary2); }
+.info-title.purple{ color:var(--purple); }
+
+.info-list{
+  margin:0;
+  padding-left:20px;
+}
+
+.info-list li{
+  color:var(--muted);
+  margin-bottom:10px;
+  line-height:1.6;
+  font-size:16px;
+}
+
+.metric-strip{
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:18px 10px;
+}
+
+.metric-feature{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  padding:10px 14px;
+}
+
+.metric-feature-icon{
+  width:52px;
+  height:52px;
+  min-width:52px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  background:#eef4ff;
+}
+
+.metric-feature-title{
+  font-size:18px;
+  font-weight:800;
+  color:var(--text);
+  margin-bottom:4px;
+}
+
+.metric-feature-text{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:15px;
+}
+
+.cta-inline{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+}
+
+.cta-btn{
+  display:inline-block;
+  background:linear-gradient(135deg, var(--primary), var(--primary2));
+  color:#fff !important;
+  text-decoration:none;
+  padding:14px 22px;
+  border-radius:16px;
+  font-weight:800;
+  font-size:18px;
 }
 
 div[data-testid="metric-container"] {
@@ -468,132 +593,171 @@ def show_landing():
 
     st.markdown('<div class="top-divider"></div>', unsafe_allow_html=True)
 
-    col_left, col_right = st.columns([1.15, 0.95], gap="large")
+    col_left, col_right = st.columns([1.25, 0.95], gap="large")
 
     with col_left:
         st.markdown("""
         <div class="hero-box">
-            <div class="eyebrow">⚙️ Eczacı odaları ve nöbet planlama süreçleri için dijital çözüm</div>
+            <div class="eyebrow">🛡️ Eczacı odaları ve nöbet planlama süreçleri için dijital çözüm</div>
             <div class="hero-title">
-                Nöbet planlamasını daha düzenli, daha şeffaf ve daha yönetilebilir hale getirin.
+                Nöbet planlamasını <span class="blue">daha düzenli</span>, <span class="green">daha şeffaf</span> ve daha yönetilebilir hale getirin.
             </div>
             <div class="hero-sub">
                 AYÇA; eczane nöbet dağılımı, denge kontrolü, raporlama ve kurumsal sunum süreçlerini tek çatı altında
-                sadeleştiren modern bir yazılım çözümüdür. Yönetimi kolay, görünümü profesyonel, anlatımı nettir.
+                sadeleştiren modern bir yazılım çözümüdür.
             </div>
         </div>
         """, unsafe_allow_html=True)
 
-        st.markdown(
-            """
-            <div class="card" style="margin-bottom:12px;">
-                <h3>Canlı Kullanım Önizlemesi</h3>
-                <p>AYÇA’nın panel yapısını ve kullanım akışını bu alanda kısa video ile gösterebilirsiniz.</p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-        st.markdown('<div class="video-wrap">', unsafe_allow_html=True)
         video_path = "tanitim.mp4"
         if os.path.exists(video_path):
+            st.markdown('<div class="video-wrap">', unsafe_allow_html=True)
             st.video(video_path)
+            st.markdown('</div>', unsafe_allow_html=True)
         else:
             st.warning("Video bulunamadı. Lütfen proje klasörüne 'tanitim.mp4' dosyasını ekleyin.")
-        st.markdown('</div>', unsafe_allow_html=True)
 
     with col_right:
-        st.markdown(
-            """
-            <div class="card" style="margin-bottom:14px;">
-                <h3>Öne Çıkan Kabiliyetler</h3>
-                <p>AYÇA; yalnızca nöbet listesini göstermekle kalmaz, süreci yönetilebilir hale getirir.</p>
+        st.markdown("""
+        <div class="info-list-card">
+            <div class="info-list-head">
+                <div class="info-icon red">⚠️</div>
+                <div style="width:100%;">
+                    <div class="info-title red">Sorunlar</div>
+                    <ul class="info-list">
+                        <li>Excel tabanlı planlamalarda hata ve tutarsızlık riski yüksektir.</li>
+                        <li>Denge kontrolü ve kısıt ihlalleri çoğu zaman geç fark edilir.</li>
+                        <li>Raporlama süreci dağınık ilerler ve zaman kaybettirir.</li>
+                    </ul>
+                </div>
             </div>
-            """,
-            unsafe_allow_html=True
-        )
+        </div>
+        """, unsafe_allow_html=True)
 
-        st.markdown(
-            """
-            <div class="video-points">
-                <ul>
-                    <li>Excel ile hızlı veri alımı</li>
-                    <li>Tarih, grup ve eczane bazlı analiz</li>
-                    <li>Kurumsal raporlama görünümü</li>
-                    <li>Aylık takvim ve özet tablo ekranları</li>
-                    <li>Şeffaf ve anlaşılır panel deneyimi</li>
-                </ul>
+        st.markdown("""
+        <div class="info-list-card">
+            <div class="info-list-head">
+                <div class="info-icon green">✅</div>
+                <div style="width:100%;">
+                    <div class="info-title green">AYÇA’nın Çözümü</div>
+                    <ul class="info-list">
+                        <li>Verileri hızlıca alır, kurallara göre kontrol eder.</li>
+                        <li>Denge, çakışma ve kritik ihlalleri görünür hale getirir.</li>
+                        <li>Anlaşılır raporlar ve güçlü özet tablolar üretir.</li>
+                        <li>Tüm süreci tek bir panelde sadeleştirir.</li>
+                    </ul>
+                </div>
             </div>
-            """,
-            unsafe_allow_html=True
-        )
+        </div>
+        """, unsafe_allow_html=True)
 
-        st.write("")
-        info_card(
-            "Kurumsal Sunum",
-            "Elde edilen çıktılar, oda yönetimi ve ilgili paydaşlara daha net aktarılabilecek profesyonel bir yapıda sunulur."
-        )
-        st.write("")
-        info_card(
-            "Operasyonel Kolaylık",
-            "Aynı akış içinde veri yükleme, kontrol, tarih seçimi, grup analizi ve eczane bazlı inceleme yapılabilir."
-        )
+        st.markdown("""
+        <div class="info-list-card">
+            <div class="info-list-head">
+                <div class="info-icon blue">⭐</div>
+                <div style="width:100%;">
+                    <div class="info-title blue">Neden AYÇA?</div>
+                    <ul class="info-list">
+                        <li>Kullanımı kolay, sade ve modern arayüz</li>
+                        <li>Kuruma özel kural ve denge yönetimi</li>
+                        <li>Şeffaf, açıklanabilir ve güvenilir sonuçlar</li>
+                        <li>Yönetim ve paydaşlar için profesyonel çıktılar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="cta-box">
+            <div class="cta-inline">
+                <div>
+                    <div class="info-title purple" style="margin-bottom:6px;">Hemen deneyin</div>
+                    <div style="color:var(--muted); line-height:1.7; font-size:16px;">
+                        Panel sekmesine geçerek AYÇA’nın canlı kullanımını inceleyebilir, tüm modülleri keşfedebilirsiniz.
+                    </div>
+                </div>
+                <div>
+                    <span class="cta-btn">Panel’e Geç →</span>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.write("")
+    st.markdown('<div class="metric-strip">', unsafe_allow_html=True)
     m1, m2, m3 = st.columns(3)
     with m1:
-        metric_card("Tek merkez", "Planlama, kontrol ve raporlama tek akışta yönetilir.")
+        st.markdown("""
+        <div class="metric-feature">
+            <div class="metric-feature-icon">🎯</div>
+            <div>
+                <div class="metric-feature-title">Tek merkez</div>
+                <div class="metric-feature-text">Planlama, kontrol ve raporlama tek akışta yönetilir.</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
     with m2:
-        metric_card("Daha az hata", "Çakışma, dengesizlik ve kritik ihlaller görünür olur.")
+        st.markdown("""
+        <div class="metric-feature">
+            <div class="metric-feature-icon" style="background:#eefbf4;">🛡️</div>
+            <div>
+                <div class="metric-feature-title">Daha az hata</div>
+                <div class="metric-feature-text">Çakışma, dengesizlik ve kritik ihlaller görünür hale gelir.</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
     with m3:
-        metric_card("Kurumsal sunum", "Karar vericilere güçlü ve anlaşılır çıktı üretir.")
+        st.markdown("""
+        <div class="metric-feature">
+            <div class="metric-feature-icon" style="background:#f4efff;">📊</div>
+            <div>
+                <div class="metric-feature-title">Kurumsal sunum</div>
+                <div class="metric-feature-text">Karar vericilere güçlü ve anlaşılır çıktı üretir.</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
     st.write("")
-    st.markdown('<div class="section-title">Kuruma değer üreten ana modüller</div>', unsafe_allow_html=True)
-    st.markdown('<div class="section-sub">Tanıtım sitendeki ana modül mantığını burada Streamlit kart yapısına taşıyoruz.</div>', unsafe_allow_html=True)
-
-    c1, c2, c3 = st.columns(3, gap="large")
-    with c1:
-        info_card("Akıllı Planlama", "Nöbet dağılımında aylık yük, hafta sonu dengesi ve kurallar tek bakışta değerlendirilir.")
-    with c2:
-        info_card("Debug & Kontrol", "Aynı gün çakışmaları, min-gap ihlalleri ve kritik istisnalar otomatik kontrol edilir.")
-    with c3:
-        info_card("Raporlama", "Excel, özet tablo ve sunum için kurumsal görünümlü çıktı katmanları hazırlanır.")
-
-    st.write("")
-    st.markdown('<div class="section-title">Neden AYÇA?</div>', unsafe_allow_html=True)
-    st.markdown('<div class="section-sub">Sadece bir yazılım değil; karar almayı kolaylaştıran ve süreci görünür hale getiren bir yapı sunar.</div>', unsafe_allow_html=True)
-
-    f1, f2 = st.columns(2, gap="large")
-    with f1:
-        info_card("Operasyonel Kazanç", "Elle kontrol yükünü azaltır, daha tutarlı aylık dağılım sağlar, hataları erkenden görünür kılar.")
-    with f2:
-        info_card("Yönetsel Kazanç", "Kurumsal karar süreçlerini hızlandırır, rapor kalitesini artırır, şeffaf ve açıklanabilir sonuç üretir.")
-
-    st.write("")
-    st.markdown('<div class="section-title">Çalışma süreci</div>', unsafe_allow_html=True)
-    st.markdown('<div class="section-sub">Sade, anlaşılır ve hızlı uygulanabilen dört adımlı yapı.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title" style="text-align:center;">Çalışma süreci</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-sub" style="text-align:center;">Sade, anlaşılır ve hızlı uygulanabilen dört adımlı yapı.</div>', unsafe_allow_html=True)
 
     s1, s2, s3, s4 = st.columns(4, gap="large")
     with s1:
-        st.markdown('<div class="card"><div class="step-num">1</div><h3>Veri Alımı</h3><p>Mevcut nöbet ve eczane verileri sisteme alınır.</p></div>', unsafe_allow_html=True)
+        st.markdown("""
+        <div class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-title">Veri Alımı</div>
+            <div class="step-text">Mevcut nöbet ve eczane verileri sisteme alınır.</div>
+        </div>
+        """, unsafe_allow_html=True)
     with s2:
-        st.markdown('<div class="card"><div class="step-num">2</div><h3>Kural Tanımı</h3><p>Kuruma özel denge ve kısıtlar yapılandırılır.</p></div>', unsafe_allow_html=True)
+        st.markdown("""
+        <div class="step-card">
+            <div class="step-num" style="background:#eefbf4;color:var(--green);">2</div>
+            <div class="step-title">Kural Tanımı</div>
+            <div class="step-text">Kuruma özel denge ve kısıtlar yapılandırılır.</div>
+        </div>
+        """, unsafe_allow_html=True)
     with s3:
-        st.markdown('<div class="card"><div class="step-num">3</div><h3>Kontrol</h3><p>Planlama çıktıları sistem tarafından taranır.</p></div>', unsafe_allow_html=True)
+        st.markdown("""
+        <div class="step-card">
+            <div class="step-num" style="background:#f4efff;color:var(--purple);">3</div>
+            <div class="step-title">Kontrol</div>
+            <div class="step-text">Planlama çıktıları sistem tarafından taranır.</div>
+        </div>
+        """, unsafe_allow_html=True)
     with s4:
-        st.markdown('<div class="card"><div class="step-num">4</div><h3>Rapor</h3><p>Yönetim ve paydaşlar için düzenli çıktı hazırlanır.</p></div>', unsafe_allow_html=True)
+        st.markdown("""
+        <div class="step-card">
+            <div class="step-num">4</div>
+            <div class="step-title">Rapor</div>
+            <div class="step-text">Yönetim ve paydaşlar için düzenli çıktı hazırlanır.</div>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.write("")
-    st.markdown("""
-    <div class="cta-box">
-        <div class="section-title" style="margin-top:0;">Kurumsal demo ile başlayalım.</div>
-        <div class="section-sub" style="margin-bottom:14px;">
-            Üstteki Panel sekmesinden doğrudan dashboard ekranına geçebilir ve canlı kullanım mantığını inceleyebilirsiniz.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
     st.caption("Mail: info@ayca.com.tr  |  Web: ayca.com.tr")
 
 # =========================================================
@@ -607,9 +771,9 @@ def show_dashboard():
     )
 
     st.markdown("""
-    <div class="hero-box">
+    <div class="card" style="padding:28px; margin-bottom:18px;">
         <div class="eyebrow">Akıllı kontrol paneli</div>
-        <div class="hero-title" style="font-size:40px;">
+        <div class="hero-title" style="font-size:40px; margin-bottom:10px;">
             Nöbet planı hazır. <span class="blue">Peki gerçekten</span> <span class="green">adil mi?</span>
         </div>
         <div class="hero-sub">
